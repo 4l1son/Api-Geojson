@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from '/Users/perei/Desktop/PROJETO_REACT/app_react01/src/styles/styles.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 

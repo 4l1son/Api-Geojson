@@ -1,26 +1,38 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-import data from "./data.json";
-import { FeatureGroup, Rectangle, useMap } from "react-leaflet";
-import { EditControl } from "react-leaflet-draw";
-import DrawnItems from '../view/drawitens';
+import axios from "axios";
 
-function Map(){
-  
-  const parsedPolygons = JSON.parse(polygons);
-  const polygons = parsedPolygons.features;
-  const [bounds, setBounds] = useState(null);
+const Map = () => {
+  const [geojsonData, setGeojsonData] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get(
+        "https://api.geojson.io/v1/data/165817498549354556943664137057842444391.geojson"
+      );
+      setGeojsonData(response.data);
+    };
+    fetchData();
+  }, []);
+
   return (
-      
-      <MapContainer center={[51.505, -0.09]} zoom={13}>
+   <>
+   <div
+    style={{
+      width: "100%",
+      height: "100%",
+      display: "flex",
+      flexDirection: "column",
+    }}
+  >  <div style={{ height: "50%" }}>
+    <MapContainer center={[51.505, -0.09]} zoom={13} style={{ height: "500px" }}>
       <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-      <DrawnItems setBounds={setBounds} />
-      {bounds && <Rectangle bounds={bounds} />}
-      <GeoJSON data={data} />
-      
+      {geojsonData && <GeoJSON data={geojsonData} />}
     </MapContainer>
+    </div>
+    </div>
+    </>
   );
-}
+};
 
 export default Map;

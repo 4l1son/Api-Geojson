@@ -6,7 +6,7 @@ import{
 
 }from "react-router-dom";
 
-import { Home } from './pages/home/home'
+import { Cadastro } from './pages/posts/cadastro'
 import { Login } from './pages/login/login';
 import { Posts } from './pages/posts/posts';
 import { View } from './pages/view/view';
@@ -17,10 +17,11 @@ function App() {
     <div className='App'>
       <Router>
       <Routes>
-      <Route path='/login' element={ <Login />}/>
+      <Route path='/' element={ <Login />}/>
       <Route path='/posts' element={ <Posts />}/>
       <Route path='/view' element={ <View />} />
-
+      <Route path='/cadastro' element={ <Cadastro />} />
+      
       </Routes>
       </Router>
     </div>

@@ -1,10 +1,5 @@
-import { Link } from "react-router-dom";
-import styles from '/Users/perei/Desktop/PROJETO_REACT/app_react01/src/styles/styles.css';
+import styles from '../styles/styles.css';
 import { useState } from "react";
-import { Home } from "../home/home";
-import axios from 'axios';
-import { Posts } from "../posts/posts";
-
 
 
 
